@@ -1,0 +1,46 @@
+import java.io.*;
+import java.util.*;
+import java.io.PrintWriter;
+
+public class Main {
+  public static void main(String[] args) {
+     try{
+       Conta conta = new Conta(100.0);
+         conta.saque(150.0);
+         System.out.println("Saldo: " + conta.getSaldo());
+       
+     }catch (Exception e) {
+         System.out.println("Erro: " + e.getMessage());
+         e.printStackTrace();
+       }try{
+       File arquivo = new File("arquivo.txt");
+       FileWriter fw = new FileWriter(arquivo,true);
+       fw.write(e.getMessage());
+       BufferedWriter bw = new BufferedWriter(fw);
+       PrintWriter pw = new PrintWriter(bw);
+       // pw.println(e.getMessage());
+       System.out.println("Erro salvo em arquivo.txt");
+       pw.close();   
+       bw.close();
+       fw.close();
+       
+       // bw.write("ola");
+       // bw.newLine();
+       // bw.write("oasdlds");
+       // bw.close();
+       // fw.close();
+      
+       FileReader fr = new FileReader(arquivo);
+       BufferedReader br = new BufferedReader(fr);
+       ArrayList<String> lista = new ArrayList();
+       while (br.ready()){
+         String[] linha14 = br.readLine().split(" ");
+         lista.addAll(Arrays.asList(linha14));
+       }for (int i = 0; i < lista.size(); i++){
+         System.out.println(lista.get(i));
+       }
+     }catch (IOException ex){
+       System.out.println("Erro ao acessar arquivo!");
+     }  
+  }
+}
