@@ -1,0 +1,20 @@
+public class Conta{
+  public double saldo;
+  public Conta(double saldo){
+    this.saldo = saldo;
+  }
+  public double getSaldo(){
+    return saldo;
+  }
+
+  public void saque(double valor) throws SaldoException{
+    if(this.saldo < valor){
+      throw new SaldoException();
+    }else if (valor <= 0){
+      throw new IllegalArgumentException("Valor inválido");
+
+    }else{
+      saldo -= valor;
+    }
+  }
+}
